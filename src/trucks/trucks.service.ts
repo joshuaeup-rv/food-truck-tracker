@@ -18,4 +18,9 @@ export class TrucksService {
     findTruck(id: string) {
         return this.foodTruckArray.find((truck) => truck.id === id);
     }
+
+    deleteTruck(id: string) {
+        const truckIndex = this.foodTruckArray.indexOf(this.findTruck(id));
+        this.foodTruckArray.splice(truckIndex, 1);
+    }
 }

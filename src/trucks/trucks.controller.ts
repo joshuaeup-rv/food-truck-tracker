@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { TrucksService } from './trucks.service';
 import { TruckDto } from './trucks.dto';
 
@@ -17,7 +17,12 @@ export class TrucksController {
     }
 
     @Post('new-truck')
-    async addTruck(@Body() truckDto: TruckDto) {
+    addTruck(@Body() truckDto: TruckDto) {
         this.truckService.addTruck(truckDto);
+    }
+
+    @Delete(':id')
+    deleteTruck(@Param() params) {
+        return this.truckService.deleteTruck(params.id);
     }
 }
